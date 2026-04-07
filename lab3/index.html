@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DevBlog — Блог про програмування</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">CodeNotes</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Головна</a></li>
+                    <li><a href="#">Статті</a></li>
+                    <li><a href="#">Туторіали</a></li>
+                    <li><a href="#">Контакти</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Освітній блог про програмування</h1>
+            <p>Вивчай C#, React та алгоритми разом з нами.</p>
+        </section>
+
+        <section class="articles-grid">
+            <article class="post-card">
+                <img src="img/csharp.png" alt="C# Lesson">
+                <div class="post-content">
+                    <h2>Основи LINQ в C#</h2>
+                    <p>Розбираємося, як ефективно працювати з колекціями даних.</p>
+                    <code class="code-snippet">var result = list.Where(x => x > 5);</code>
+                    <a href="#" class="btn-read">Читати далі</a>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <img src="img/react.jpeg" alt="React Lesson">
+                <div class="post-content">
+                    <h2>Hooks у React</h2>
+                    <p>Що таке useState та useEffect і як їх використовувати правильно.</p>
+                    <code class="code-snippet">const [state, setState] = useState();</code>
+                    <a href="#" class="btn-read">Читати далі</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="comments-section">
+            <h3>Коментарі (2)</h3>
+            <div class="comment">
+                <strong>Ярослав:</strong> Дуже корисна стаття про інтерфейси!
+            </div>
+            <form class="comment-form">
+                <textarea placeholder="Залишити коментар..."></textarea>
+                <button type="submit" class="btn-read">Відправити</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CodeNotes Edu. Всі права захищені.</p>
+    </footer>
+
+</body>
+</html>
