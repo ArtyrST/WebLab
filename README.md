@@ -20,7 +20,7 @@ CSS3 — стилізація, Flexbox, Grid, анімації.
 Клонуйте репозиторій:
 
 Bash
-git clone https://github.com/ваш-нікнейм/назва-репозиторія.git
+git clone https://github.com/ArtyrST/WebLab.git
 Перейдіть у папку проєкту:
 
 Bash
