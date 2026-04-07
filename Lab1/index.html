@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Інформація про країни Європи</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #333; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .container { width: 80%; margin: auto; font-family: Arial, sans-serif; }
+        img { max-width: 300px; height: auto; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Світ географії: Континент Європа</h1>
+    <p>Європа — частина світу в північній півкулі, що омивається Атлантичним і Північним Льодовитим океанами.</p>
+
+    <h2>Видатні місця</h2>
+    <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=1000" alt="Краєвид Європи">
+    <p>Більше інформації можна знайти на <a href="https://uk.wikipedia.org/wiki/Європа" target="_blank">Вікіпедії</a>.</p>
+
+    <h3>Основні характеристики регіону:</h3>
+    <ul>
+        <li>Високий рівень урбанізації.</li>
+        <li>Різноманітність культур та мов.</li>
+        <li>Потужний економічний розвиток.</li>
+    </ul>
+
+    <h2>Детальна інформація про країни</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Назва країни</th>
+                <th>Столиця</th>
+                <th>Площа (км²)</th>
+                <th>Економічний розвиток</th>
+                <th>Населення</th>
+                <th>Національність</th>
+                <th>Міста</th>
+                <th>Примітка</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Німеччина</td>
+                <td>Берлін</td>
+                <td>357,022</td>
+                <td>Розвинута</td>
+                <td>~83 млн</td>
+                <td>Німці</td>
+                <td>Мюнхен, Гамбург, Кельн</td>
+                <td>Лідер ЄС</td>
+            </tr>
+            <tr>
+                <td>Франція</td>
+                <td>Париж</td>
+                <td>551,695</td>
+                <td>Розвинута</td>
+                <td>~67 млн</td>
+                <td>Французи</td>
+                <td>Ліон, Марсель, Ніцца</td>
+                <td>Найбільша країна Західної Європи</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Додати нову країну до бази</h2>
+    <form action="#">
+        <label for="country">Назва країни:</label><br>
+        <input type="text" id="country" name="country" required><br><br>
+
+        <label for="area">Площа території:</label><br>
+        <input type="number" id="area" name="area"><br><br>
+
+        <label>Економічний статус:</label><br>
+        <input type="radio" id="dev" name="status" value="developed">
+        <label for="dev">Розвинута</label>
+        <input type="radio" id="undef" name="status" value="developing">
+        <label for="undef">Потребує розвитку</label><br><br>
+
+        <label for="note">Примітка:</label><br>
+        <textarea id="note" name="note" rows="4" cols="30"></textarea><br><br>
+
+        <button type="submit">Надіслати дані</button>
+    </form>
+</div>
+
+</body>
+</html>
