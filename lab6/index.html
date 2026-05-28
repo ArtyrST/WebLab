@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Додавання товару | Магазин</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f0f2f5;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      padding: 2.5rem;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .form-label {
+      font-weight: 600;
+      color: #343a40;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 0.2rem rgba(13,110,253,.15);
+    }
+    .btn-primary {
+      padding: 0.6rem 2rem;
+      font-weight: 600;
+      border-radius: 8px;
+    }
+    .invalid-feedback {
+      font-size: 0.85rem;
+    }
+    .product-table-section {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .badge-category {
+      font-size: 0.78rem;
+      padding: 0.35em 0.7em;
+      border-radius: 6px;
+    }
+    #successAlert {
+      display: none;
+    }
+    .table th {
+      background-color: #e9ecef;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Навігаційне меню -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">🛒 Магазин</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Головна</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">Каталог</a></li>
+          <li class="nav-item"><a class="nav-link" href="#addForm">Додати товар</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Повідомлення про успіх -->
+    <div class="alert alert-success alert-dismissible fade show mt-4" id="successAlert" role="alert">
+      <strong>✅ Товар успішно додано!</strong> Перевірте таблицю нижче.
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <!-- Форма додавання товару -->
+    <div class="form-card" id="addForm">
+      <h3 class="mb-4 text-primary fw-bold">📦 Додавання товару</h3>
+      <form id="productForm" novalidate>
+
+        <div class="row g-3">
+          <!-- Назва товару -->
+          <div class="col-md-6">
+            <label for="productName" class="form-label">Назва товару <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="productName" placeholder="Наприклад: Ноутбук Lenovo" required minlength="2">
+            <div class="invalid-feedback">Введіть назву товару (мінімум 2 символи).</div>
+          </div>
+
+          <!-- Категорія -->
+          <div class="col-md-6">
+            <label for="category" class="form-label">Категорія <span class="text-danger">*</span></label>
+            <select class="form-select" id="category" required>
+              <option value="">-- Оберіть категорію --</option>
+              <option value="Електроніка">Електроніка</option>
+              <option value="Одяг">Одяг</option>
+              <option value="Їжа та напої">Їжа та напої</option>
+              <option value="Побутова техніка">Побутова техніка</option>
+              <option value="Спорт">Спорт</option>
+              <option value="Книги">Книги</option>
+              <option value="Інше">Інше</option>
+            </select>
+            <div class="invalid-feedback">Оберіть категорію товару.</div>
+          </div>
+
+          <!-- Ціна -->
+          <div class="col-md-4">
+            <label for="price" class="form-label">Ціна (грн) <span class="text-danger">*</span></label>
+            <input type="number" class="form-control" id="price" placeholder="0.00" min="0.01" step="0.01" required>
+            <div class="invalid-feedback">Введіть коректну ціну (більше 0).</div>
+          </div>
+
+          <!-- Кількість -->
+          <div class="col-md-4">
+            <label for="quantity" class="form-label">Кількість (шт.) <span class="text-danger">*</span></label>
+            <input type="number" class="form-control" id="quantity" placeholder="1" min="1" required>
+            <div class="invalid-feedback">Введіть кількість (мінімум 1).</div>
+          </div>
+
+          <!-- Артикул -->
+          <div class="col-md-4">
+            <label for="sku" class="form-label">Артикул (SKU)</label>
+            <input type="text" class="form-control" id="sku" placeholder="SKU-00001" pattern="[A-Za-z0-9\-]{3,20}">
+            <div class="invalid-feedback">Артикул: 3–20 символів, лише літери, цифри та дефіс.</div>
+          </div>
+
+          <!-- Опис -->
+          <div class="col-12">
+            <label for="description" class="form-label">Опис товару <span class="text-danger">*</span></label>
+            <textarea class="form-control" id="description" rows="3" placeholder="Короткий опис товару..." required minlength="10"></textarea>
+            <div class="invalid-feedback">Введіть опис товару (мінімум 10 символів).</div>
+          </div>
+
+          <!-- Виробник -->
+          <div class="col-md-6">
+            <label for="brand" class="form-label">Виробник</label>
+            <input type="text" class="form-control" id="brand" placeholder="Наприклад: Samsung">
+          </div>
+
+          <!-- Наявність -->
+          <div class="col-md-6 d-flex align-items-end">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="inStock" checked>
+              <label class="form-check-label" for="inStock">Товар у наявності</label>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="d-flex gap-2 flex-wrap">
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            ➕ Додати товар
+          </button>
+          <button type="reset" class="btn btn-outline-secondary" id="resetBtn">
+            🔄 Очистити форму
+          </button>
+        </div>
+
+        <div id="errorSummary" class="alert alert-danger mt-3" style="display:none;"></div>
+
+      </form>
+    </div>
+
+    <!-- Таблиця товарів -->
+    <div class="product-table-section" id="products">
+      <h4 class="mb-3 text-dark fw-bold">📋 Каталог товарів</h4>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle" id="productTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Назва</th>
+              <th>Категорія</th>
+              <th>Ціна (грн)</th>
+              <th>Кількість</th>
+              <th>Артикул</th>
+              <th>Виробник</th>
+              <th>Наявність</th>
+              <th>Дія</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody">
+            <!-- Товари будуть додаватись тут -->
+            <tr id="emptyRow">
+              <td colspan="9" class="text-center text-muted py-4">Товарів ще не додано</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-muted small mt-2">Всього товарів: <strong id="totalCount">0</strong> | Загальна вартість: <strong id="totalValue">0.00 грн</strong></p>
+    </div>
+
+  </div>
+
+ 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
