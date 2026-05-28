@@ -114,6 +114,9 @@ body {
     .nav-links {
         margin-top: 15px;
     }
+    footer {
+        width: 90%;
+    }
 }
 
 
@@ -125,4 +128,11 @@ body {
     .post-content h2 {
         font-size: 1.2rem;
     }
+    footer {
+        width: 85%;
+    }
+}
+
+footer {
+    background-color: red;
 }

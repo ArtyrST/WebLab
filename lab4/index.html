@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Додавання товару - Варіант 16</title>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .form-container { max-width: 400px; padding: 20px; border: 1px solid #ccc; }
+        .error { color: red; font-size: 0.9em; }
+        input, textarea, select { width: 100%; margin-bottom: 10px; display: block; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Додати новий товар</h2>
+        <form id="productForm" action="form.php" method="POST">
+            <label for="p_name">Назва товару:</label>
+            <input type="text" id="p_name" name="p_name">
+            
+            <label for="p_price">Ціна (грн):</label>
+            <input type="number" id="p_price" name="p_price" step="0.01">
+            
+            <label for="p_category">Категорія:</label>
+            <select id="p_category" name="p_category">
+                <option value="">-- Оберіть категорію --</option>
+                <option value="electronics">Електроніка</option>
+                <option value="clothing">Одяг</option>
+                <option value="home">Дім та сад</option>
+            </select>
+
+            <label for="p_desc">Опис товару:</label>
+            <textarea id="p_desc" name="p_desc" rows="4"></textarea>
+
+            <button type="submit">Додати товар</button>
+        </form>
+        <div id="js-errors" class="error"></div>
+    </div>
+
+    <!-- Підключення власного скрипта -->
+    <script src="js/main.js"></script>
+</body>
+</html>
